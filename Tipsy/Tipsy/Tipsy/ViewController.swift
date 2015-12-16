@@ -11,12 +11,13 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    let defaults = NSUserDefaults.standardUserDefaults();
     let locationManager = CLLocationManager();
     var localeResolution = NSLocale.currentLocale(); // Default currency = iOS user's region/language settings.
     var localeResolved = false;
     var billFieldLifted = false;
     var tipPercent: Int = 20;
-    var splitWays = 2;
+    var splitWays: Int = 2;
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!;
@@ -51,6 +52,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             // ensure permissions are available
         locationManager.startUpdatingLocation();
             // bombs away!
+        
+        // restore last session
+        let lastSessionTime = defaults.integerForKey("lastCalculationTime") ?? 0;
+        let currentTimestamp = Int(NSDate().timeIntervalSince1970);
+        if(currentTimestamp - lastSessionTime < 300) {
+        let billSubtotal = defaults.doubleForKey("subtotal") ?? 0;
+            if(billSubtotal >= 0.0) {
+                print("billSubtotal:");
+                print(billSubtotal);
+                tipPercent = defaults.integerForKey("tipPercent") ?? tipPercent;
+                splitWays = defaults.integerForKey("splitWays") ?? splitWays;
+                print("tipPercent:");
+                print(tipPercent);
+                print("splitWays:");
+                print(splitWays);
+                billField.text = String(billSubtotal);
+                animateLiftTextfield();
+                updateTipLabels(billSubtotal);
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -125,6 +146,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateTipLabels(billSubtotal : Double) {
+        let currentTimestamp = Int(NSDate().timeIntervalSince1970);
+        defaults.setDouble(billSubtotal, forKey: "subtotal");
+        defaults.setInteger(tipPercent, forKey: "tipPercent");
+        defaults.setInteger(splitWays, forKey: "splitWays");
+        defaults.setInteger(currentTimestamp, forKey: "lastCalculationTime");
+        
         if(billSubtotal <= 0) {
             return;
         }

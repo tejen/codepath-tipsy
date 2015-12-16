@@ -12,7 +12,7 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager();
-    var localeResolution = NSLocale(localeIdentifier: "en_US"); // Default currency = USD
+    var localeResolution = NSLocale.currentLocale(); // Default currency = iOS user's region/language settings.
     var localeResolved = false;
     var billFieldLifted = false;
     var tipPercent: Int = 20;
@@ -127,5 +127,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         SplitWaysLabel.text = "x " + String(splitWays);
         updateTipLabels(getBillSubtotal());
     }
+
 }
 

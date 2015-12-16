@@ -16,19 +16,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var localeResolved = false;
     var billFieldLifted = false;
     var tipPercent: Int = 20;
+    var splitWays = 2;
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!;
     @IBOutlet weak var totalLabel: UILabel!;
+    @IBOutlet weak var Total2xLabel: UILabel!
     @IBOutlet weak var tipPercentLabel: UILabel!
     @IBOutlet weak var tipSlider: UISlider!
 
+    @IBOutlet weak var Splitter: UIStepper!
+    @IBOutlet weak var SplitHead: UIImageView!
+    @IBOutlet weak var SplitWaysLabel: UILabel!
+    
     @IBOutlet weak var billFieldCenterY: NSLayoutConstraint!
     
     @IBOutlet weak var resultViewBottomConstraint: NSLayoutConstraint!
     
     var billFieldCenterConstraint: NSLayoutConstraint!;
-  
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        billField.becomeFirstResponder();
+        billField.placeholder = getCurrencySymbol();
+        
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,6 +62,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             animateDropTextfield();
         }
         updateTipLabels(billSubtotal);
+    }
+    
+    func getCurrencySymbol() -> String {
+        return localeResolution.objectForKey(NSLocaleCurrencySymbol) as! String;
     }
     
     func animateLiftTextfield() {
@@ -89,6 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         tipLabel.text = formatter.stringFromNumber(tipAmount);
         totalLabel.text = formatter.stringFromNumber(total);
+        Total2xLabel.text = formatter.stringFromNumber(total/Double(splitWays));
     }
     
     func changeTipPercent(newPercent: Int) {
@@ -102,5 +122,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         updateTipLabels(getBillSubtotal());
     }
     
+    @IBAction func splitHeads(sender: AnyObject) {
+        splitWays = Int(Splitter.value);
+        SplitWaysLabel.text = "x " + String(splitWays);
+        updateTipLabels(getBillSubtotal());
+    }
 }
 

@@ -42,11 +42,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         billField.becomeFirstResponder();
         billField.placeholder = getCurrencySymbol();
         
+        /* initializing instance of CLLocationManager */
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+            // Keeping accuracy low for speed and to conserve power/resources.
+            // Acceptable; just need to determine country (locale), that too, optionally.
+        locationManager.requestWhenInUseAuthorization();
+            // ensure permissions are available
+        locationManager.startUpdatingLocation();
+            // bombs away!
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation(); // All done! Conserve power.
+        var placemark: CLPlacemark!;
+        var countryCode: String = "";
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
+            if error == nil && placemarks!.count > 0 {
+                print("Current location: \(manager.location)"); // debug
+                placemark = placemarks![0] as CLPlacemark;
+                countryCode = placemark!.ISOcountryCode! ?? "";
+                if(countryCode != "") {
+                    let components = NSDictionary(object: countryCode, forKey: NSLocaleCountryCode);
+                    var localeIdent = NSLocale.localeIdentifierFromComponents(components as! [String : String]);
+                    if(countryCode == "US") { // Exception for US$: hide country name from UI.
+                        localeIdent = NSLocale(localeIdentifier: "en_US").localeIdentifier;
+                    }
+                    self.localeResolution = NSLocale(localeIdentifier: localeIdent);
+                    self.localeResolved = true;
+                }
+            }
+        });
+        billField.placeholder = getCurrencySymbol();
     }
     
     func getBillSubtotal() -> Double {
@@ -70,7 +102,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func animateLiftTextfield() {
         billFieldLifted = true;
-        print("open field");
 
         billFieldCenterConstraint = billFieldCenterY; // backup
         
@@ -83,7 +114,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func animateDropTextfield() {
         billFieldLifted = false;
-        print("close field");
         
         billFieldCenterY = billFieldCenterConstraint; // restore backup
         

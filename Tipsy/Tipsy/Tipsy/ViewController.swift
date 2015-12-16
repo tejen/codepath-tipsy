@@ -157,6 +157,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         SplitWaysLabel.text = "x " + String(splitWays);
         updateTipLabels(getBillSubtotal());
     }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if(motion == .MotionShake) {
+            tipPercent = (10 + Int(arc4random_uniform(UInt32(30 - 10 + 1))));
+            changeTipPercent(tipPercent);
+            updateTipLabels(getBillSubtotal());
+        }
+    }
 
 }
 

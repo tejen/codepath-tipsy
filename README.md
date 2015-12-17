@@ -42,7 +42,7 @@ The following **additional** features are implemented:
 Download walkthrough GIF: [x.tejen.net/hv9](http://x.tejen.net/hv9)
 
 
-#### Here's a quick peek of the auto-layouts an *iPad Air 2 in Landscape Orientation*:
+#### Here's a peek of auto-layouts on an *iPad Air 2 in Landscape Orientation*:
 <img src='https://www.tejen.net/sub/imghosting/61f453e04bbefc93830388e1de81105e.gif' title='A quick peek on an iPad 2 Mini in Landscape Orientation, demonstration auto-layouts' width='' alt='A quick peek on an iPad 2 Mini in Landscape Orientation, demonstration auto-layouts' />
 
 Download iPad layout demo GIF: [x.tejen.net/w4s](http://x.tejen.net/w4s)

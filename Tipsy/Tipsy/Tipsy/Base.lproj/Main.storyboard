@@ -35,19 +35,19 @@
                                 <rect key="frame" x="0.0" y="301" width="601" height="10000"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="18" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="hds-pr-P2R" userLabel="TipSlider">
-                                        <rect key="frame" x="25" y="11" width="509" height="31"/>
+                                        <rect key="frame" x="25" y="51" width="509" height="31"/>
                                         <connections>
                                             <action selector="onTipSliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="A9d-fs-hlv"/>
                                         </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="20%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHq-do-rfA" userLabel="TipAmountLabel">
-                                        <rect key="frame" x="550" y="16" width="34" height="21"/>
+                                        <rect key="frame" x="550" y="56" width="34" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <color key="textColor" red="0.91578710080000003" green="0.67873740199999999" blue="0.99944877620000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$1.20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4A-3T-Fa6">
-                                        <rect key="frame" x="242" y="41" width="116" height="60"/>
+                                        <rect key="frame" x="231" y="-4" width="116" height="60"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                         <color key="textColor" red="0.91578710080000003" green="0.67873740199999999" blue="0.99944877620000006" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -94,14 +94,14 @@
                                 <constraints>
                                     <constraint firstItem="aHq-do-rfA" firstAttribute="trailing" secondItem="YC5-To-Jer" secondAttribute="trailing" constant="-8" id="Fp1-gQ-T8D"/>
                                     <constraint firstAttribute="trailing" secondItem="FkJ-OD-cl3" secondAttribute="trailing" constant="10" id="I16-vu-F1P"/>
-                                    <constraint firstItem="r4A-3T-Fa6" firstAttribute="centerX" secondItem="YC5-To-Jer" secondAttribute="centerX" id="LDN-BO-3Dz"/>
-                                    <constraint firstItem="hds-pr-P2R" firstAttribute="top" secondItem="YC5-To-Jer" secondAttribute="top" constant="10" id="Rmw-Nn-vza"/>
-                                    <constraint firstItem="hds-pr-P2R" firstAttribute="leading" secondItem="YC5-To-Jer" secondAttribute="leading" constant="10" id="RqN-5S-4XU"/>
+                                    <constraint firstItem="r4A-3T-Fa6" firstAttribute="centerX" secondItem="YC5-To-Jer" secondAttribute="centerX" constant="115" id="LDN-BO-3Dz"/>
+                                    <constraint firstItem="hds-pr-P2R" firstAttribute="top" secondItem="YC5-To-Jer" secondAttribute="top" constant="50" id="Rmw-Nn-vza"/>
+                                    <constraint firstItem="hds-pr-P2R" firstAttribute="leading" secondItem="YC5-To-Jer" secondAttribute="leading" constant="40" id="RqN-5S-4XU"/>
                                     <constraint firstItem="RY2-B3-JPM" firstAttribute="leading" secondItem="YC5-To-Jer" secondAttribute="leading" constant="15" id="Uoe-cb-FXP"/>
                                     <constraint firstAttribute="trailing" secondItem="TpC-3W-SWY" secondAttribute="trailing" constant="10" id="oO5-hd-qcp"/>
                                     <constraint firstItem="aHq-do-rfA" firstAttribute="width" secondItem="YC5-To-Jer" secondAttribute="width" multiplier="0.12" id="oZg-cB-mbm"/>
-                                    <constraint firstItem="hds-pr-P2R" firstAttribute="width" secondItem="YC5-To-Jer" secondAttribute="width" multiplier="0.88" constant="-20" id="oaE-o1-dhZ"/>
-                                    <constraint firstItem="aHq-do-rfA" firstAttribute="top" secondItem="YC5-To-Jer" secondAttribute="top" constant="15" id="sd5-9A-a7J"/>
+                                    <constraint firstItem="hds-pr-P2R" firstAttribute="width" secondItem="YC5-To-Jer" secondAttribute="width" multiplier="0.88" constant="-50" id="oaE-o1-dhZ"/>
+                                    <constraint firstItem="aHq-do-rfA" firstAttribute="top" secondItem="YC5-To-Jer" secondAttribute="top" constant="55" id="sd5-9A-a7J"/>
                                 </constraints>
                             </view>
                             <button hidden="YES" autoresizesSubviews="NO" opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-Fx-ccJ" userLabel="SettingsButton">

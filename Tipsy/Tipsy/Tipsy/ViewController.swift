@@ -79,6 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 updateTipLabels(billSubtotal);
             }
         }
+        tipLabelFollowSlider(tipPercent);
     }
 
     override func didReceiveMemoryWarning() {
@@ -204,8 +205,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         Total2xLabel.text = formatter.stringFromNumber(total/Double(splitWays));
     }
     
+    func tipLabelFollowSlider(percent: Int) {
+        // hardcoded linear equation from two points (left and right extremities)
+        let newLeftOffsetConstant = ((17/2.0) * Double(tipPercent)) - 140.0;
+        tipLabelX.constant = CGFloat(newLeftOffsetConstant);
+    }
+    
     func changeTipPercent(newPercent: Int) {
         tipPercent = newPercent;
+        tipLabelFollowSlider(newPercent);
         tipPercentLabel.text = String(tipPercent) + "%";
     }
     

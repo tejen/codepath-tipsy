@@ -61,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // restore last session
         let lastSessionTime = defaults.integerForKey("lastCalculationTime") ?? 0;
         let currentTimestamp = Int(NSDate().timeIntervalSince1970);
-        if(currentTimestamp - lastSessionTime < 300) {
+        if(currentTimestamp - lastSessionTime < 3600) { // persist across restarts for 1 hour
         let billSubtotal = defaults.doubleForKey("subtotal") ?? 0;
             if(billSubtotal >= 0.0) {
                 tipPercent = defaults.integerForKey("tipPercent") ?? tipPercent;

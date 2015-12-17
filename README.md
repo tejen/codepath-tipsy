@@ -31,6 +31,8 @@ The following **additional** features are implemented:
 * [X] **Slider** to change the Tip amount! Using constraints programmatically to **make UILabel follow the UISlider** as you change the tip amount.
 * [X] Split the bill with up to 10 people. Use a **UIStepper** to specify the number of people in the party.
 * [X] SettingsViewController has **switches**. UISwitch events interact with each other and enable/disable each other.
+* [ ] A microphone icon: tap to dictate your bill subtotal and desired tip percent. LOLLLLL Jk
+* [ ] What else could ya do?
 
 ## Video Walkthrough 
 

@@ -157,7 +157,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         });
         
         UIView.animateWithDuration(0.8, animations: {
-            self.SettingsButton.alpha = 1;
+            self.SettingsButton.alpha = 0.55;
         });
         
     }
@@ -232,6 +232,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if(motion == .MotionShake) {
             tipPercent = (10 + Int(arc4random_uniform(UInt32(30 - 10 + 1))));
+            tipSlider.value = Float(tipPercent);
             changeTipPercent(tipPercent);
             updateTipLabels(getBillSubtotal());
         }

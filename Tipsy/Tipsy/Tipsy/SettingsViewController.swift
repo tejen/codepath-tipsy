@@ -56,7 +56,11 @@ class SettingsViewController: UIViewController {
     }
     
     func formattingAlgorithm() -> String! {
-        return String(defaults.objectForKey("formattingAlgorithm")!);
+        var algorithm = "location"; // by default, use location for currency
+        if(defaults.objectForKey("formattingAlgorithm") != nil) {
+            algorithm = String(defaults.objectForKey("formattingAlgorithm")!);
+        }
+        return algorithm;
     }
     
     func currencyMatchLocation(animateDuration: Double = 0.4) {

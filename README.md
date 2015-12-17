@@ -36,13 +36,18 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough 
 
-Here's a walkthrough of implemented user stories:
-
+#### Here's a walkthrough of implemented user stories on an *iPhone*:
 <img src='https://www.tejen.net/sub/imghosting/f52297f4aab4766eaae3277cf7192284.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Download walkthrough GIF: [x.tejen.net/hv9](http://x.tejen.net/hv9)
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/) (which kept crashing on my MacBook Pro running OSX 10.11.1 until I disconnected all external monitors...).
+
+#### Here's a quick peek of the auto-layouts an *iPad Air 2 in Landscape Orientation*:
+<img src='https://www.tejen.net/sub/imghosting/33ca650adb63410ceeb26235f480f3c4.gif' title='A quick peek on an iPad 2 Mini in Landscape Orientation, demonstration auto-layouts' width='' alt='A quick peek on an iPad 2 Mini in Landscape Orientation, demonstration auto-layouts' />
+
+Download iPad layout demo GIF: [x.tejen.net/mz9](http://x.tejen.net/mz9)
+
+GIFs created with [LiceCap](http://www.cockos.com/licecap/).
 
 
 ## Notes

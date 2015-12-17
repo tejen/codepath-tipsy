@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		654105951C22339B0020CEB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654105941C22339B0020CEB6 /* LaunchScreen.storyboard */; };
 		65B6F9F01C210F7F0049F148 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6F9EF1C210F7F0049F148 /* AppDelegate.swift */; };
 		65B6F9F21C210F7F0049F148 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6F9F11C210F7F0049F148 /* ViewController.swift */; };
 		65B6F9F51C210F7F0049F148 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B6F9F31C210F7F0049F148 /* Main.storyboard */; };
 		65B6F9F71C210F7F0049F148 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65B6F9F61C210F7F0049F148 /* Assets.xcassets */; };
-		65B6F9FA1C210F7F0049F148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65B6F9F81C210F7F0049F148 /* LaunchScreen.storyboard */; };
 		65B6FA051C210F7F0049F148 /* TipsyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6FA041C210F7F0049F148 /* TipsyTests.swift */; };
 		65B6FA101C210F7F0049F148 /* TipsyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B6FA0F1C210F7F0049F148 /* TipsyUITests.swift */; };
 		65B6FA231C2136F00049F148 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B6FA1D1C2130270049F148 /* CoreLocation.framework */; };
@@ -49,12 +49,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		654105941C22339B0020CEB6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65B6F9EC1C210F7F0049F148 /* Tipsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B6F9EF1C210F7F0049F148 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65B6F9F11C210F7F0049F148 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		65B6F9F41C210F7F0049F148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65B6F9F61C210F7F0049F148 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		65B6F9F91C210F7F0049F148 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65B6F9FB1C210F7F0049F148 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65B6FA001C210F7F0049F148 /* TipsyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65B6FA041C210F7F0049F148 /* TipsyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsyTests.swift; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 				65B6F9F11C210F7F0049F148 /* ViewController.swift */,
 				65B6F9F31C210F7F0049F148 /* Main.storyboard */,
 				65B6F9F61C210F7F0049F148 /* Assets.xcassets */,
-				65B6F9F81C210F7F0049F148 /* LaunchScreen.storyboard */,
 				65B6F9FB1C210F7F0049F148 /* Info.plist */,
+				654105941C22339B0020CEB6 /* LaunchScreen.storyboard */,
 			);
 			path = Tipsy;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65B6FA241C2136FF0049F148 /* CoreLocation.framework in Resources */,
-				65B6F9FA1C210F7F0049F148 /* LaunchScreen.storyboard in Resources */,
+				654105951C22339B0020CEB6 /* LaunchScreen.storyboard in Resources */,
 				65B6F9F71C210F7F0049F148 /* Assets.xcassets in Resources */,
 				65B6F9F51C210F7F0049F148 /* Main.storyboard in Resources */,
 			);
@@ -320,14 +320,6 @@
 				65B6F9F41C210F7F0049F148 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		65B6F9F81C210F7F0049F148 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65B6F9F91C210F7F0049F148 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -513,6 +505,7 @@
 				65B6FA161C210F7F0049F148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65B6FA171C210F7F0049F148 /* Build configuration list for PBXNativeTarget "TipsyTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +514,7 @@
 				65B6FA191C210F7F0049F148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65B6FA1A1C210F7F0049F148 /* Build configuration list for PBXNativeTarget "TipsyUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +523,7 @@
 				65B6FA1C1C210F7F0049F148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

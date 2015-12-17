@@ -73,7 +73,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="head" translatesAutoresizingMaskIntoConstraints="NO" id="5Wt-wk-ir5">
-                                        <rect key="frame" x="33" y="234" width="31" height="31"/>
+                                        <rect key="frame" x="27" y="234" width="31" height="31"/>
                                     </imageView>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="RY2-B3-JPM">
                                         <rect key="frame" x="19" y="269" width="94" height="29"/>
@@ -82,8 +82,8 @@
                                         </connections>
                                     </stepper>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="x 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWr-id-jvO">
-                                        <rect key="frame" x="69" y="237" width="56" height="26"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <rect key="frame" x="63" y="237" width="56" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" red="0.29411764705882354" green="0.18823529411764706" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>

@@ -27,7 +27,7 @@ The following **additional** features are implemented:
 * [X] Dedicated icons for Spotlight.
 * [X] App icons for every device type and size.
 * [X] Startup Screen for every device type and size.
-* [X] **Universal app.** Compatible with all device types and sizes. Using **size classes and constraints** for every UI element and every view controller inclusing Startup Screen view.
+* [X] **Universal app.** Compatible with all device types and sizes. Using **size classes and constraints** for every UI element and every view controller including Startup Screen view.
 * [X] **Slider** to change the Tip amount! Using constraints programmatically to **make UILabel follow the UISlider** as you change the tip amount.
 * [X] Split the bill with up to 10 people. Use a **UIStepper** to specify the number of people in the party.
 * [X] SettingsViewController has **switches**. UISwitch events interact with each other and enable/disable each other.

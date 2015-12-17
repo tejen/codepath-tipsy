@@ -68,6 +68,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 print("splitWays:");
                 print(splitWays);
                 billField.text = String(billSubtotal);
+                tipSlider.value = Float(tipPercent);
+                tipPercentLabel.text = String(tipPercent) + "%";
+                Splitter.value = Double(splitWays);
+                SplitWaysLabel.text = "x " + String(splitWays);
                 animateLiftTextfield();
                 updateTipLabels(billSubtotal);
             }

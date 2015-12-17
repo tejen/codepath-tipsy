@@ -21,11 +21,33 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var SettingsCurrencyDefaultDescription: UITextView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
         
         // Do any additional setup after loading the view.
 
-        currencyMatchLocation();
+        switch formattingAlgorithm() {
+        case "default":
+            SwitchCurrencyByLocation.setOn(false, animated: false);
+            SwitchCurrencyBySystem.setOn(false, animated: false);
+            SwitchCurrencyBySystem.enabled = true;
+            SwitchCurrencyBySystemLabel.enabled = true;
+            currencyMatchFallback(0);
+            break;
+        case "system":
+            SwitchCurrencyByLocation.setOn(false, animated: false);
+            SwitchCurrencyBySystem.setOn(true, animated: false);
+            SwitchCurrencyBySystem.enabled = true;
+            SwitchCurrencyBySystemLabel.enabled = true;
+            currencyMatchSystem(0);
+            break;
+        default:
+            SwitchCurrencyByLocation.setOn(true, animated: false);
+            SwitchCurrencyBySystem.setOn(true, animated: false);
+            SwitchCurrencyBySystem.enabled = false;
+            SwitchCurrencyBySystemLabel.enabled = false;
+            currencyMatchLocation(0);
+            break;
+        };
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,24 +55,28 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func currencyMatchLocation() {
-        UIView.animateWithDuration(0.4, animations: {
+    func formattingAlgorithm() -> String! {
+        return String(defaults.objectForKey("formattingAlgorithm")!);
+    }
+    
+    func currencyMatchLocation(animateDuration: Double = 0.4) {
+        UIView.animateWithDuration(animateDuration, animations: {
             self.SettingsCurrencyLocationDescription.alpha = 1;
             self.SettingsCurrencySystemDescription.alpha = 0;
             self.SettingsCurrencyDefaultDescription.alpha = 0;
         });
     }
     
-    func currencyMatchSystem() {
-        UIView.animateWithDuration(0.4, animations: {
+    func currencyMatchSystem(animateDuration: Double = 0.4) {
+        UIView.animateWithDuration(animateDuration, animations: {
             self.SettingsCurrencyLocationDescription.alpha = 0;
             self.SettingsCurrencySystemDescription.alpha = 1;
             self.SettingsCurrencyDefaultDescription.alpha = 0;
         });
     }
     
-    func currencyMatchFallback(){
-        UIView.animateWithDuration(0.4, animations: {
+    func currencyMatchFallback(animateDuration: Double = 0.4){
+        UIView.animateWithDuration(animateDuration, animations: {
             self.SettingsCurrencyLocationDescription.alpha = 0;
             self.SettingsCurrencySystemDescription.alpha = 0;
             self.SettingsCurrencyDefaultDescription.alpha = 1;

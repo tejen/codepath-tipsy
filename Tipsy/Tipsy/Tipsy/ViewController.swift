@@ -14,12 +14,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let defaults = NSUserDefaults.standardUserDefaults();
     let locationManager = CLLocationManager();
     var localeResolution = NSLocale.currentLocale(); // Default currency = iOS user's region/language settings.
-    var localeResolved = false;
     var billFieldLifted = false;
     var tipPercent: Int = 20;
     var splitWays: Int = 2;
     var billFieldCenterConstraint: NSLayoutConstraint!;
-    var formattingAlgorithm: String!;
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!;
@@ -46,9 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
             // Determine currency/formatting style
             // get user preference, or default to Format By Location
-        formattingAlgorithm = String(defaults.objectForKey("formattingAlgorithm")) ?? "location";
-        print("formatting:" + formattingAlgorithm);
-        
+       
         billField.becomeFirstResponder();
         billField.placeholder = getCurrencySymbol();
         
@@ -87,8 +83,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+        applyCurrencySettings();
+    }
+    
+    func formattingAlgorithm() -> String {
+        return String(defaults.objectForKey("formattingAlgorithm")!);
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation(); // All done! Conserve power.
+//        locationManager.stopUpdatingLocation(); // All done! Conserve power.
         var placemark: CLPlacemark!;
         var countryCode: String = "";
         CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
@@ -103,11 +108,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         localeIdent = NSLocale(localeIdentifier: "en_US").localeIdentifier;
                     }
                     self.localeResolution = NSLocale(localeIdentifier: localeIdent);
-                    self.localeResolved = true;
                 }
             }
         });
+        applyCurrencySettings();
+    }
+    
+    func applyCurrencySettings() {
         billField.placeholder = getCurrencySymbol();
+        updateTipLabels(getBillSubtotal());
     }
     
     func getBillSubtotal() -> Double {
@@ -127,19 +136,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func getCurrencySymbol() -> String {
         var currencySymbol: String!;
-        
-        switch formattingAlgorithm {
-        case "location":
-            currencySymbol = localeResolution.objectForKey(NSLocaleCurrencySymbol) as! String;
+        switch formattingAlgorithm() {
+        case "default":
+            currencySymbol = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCurrencySymbol) as! String;
             break;
         case "system":
             currencySymbol = NSLocale.currentLocale().objectForKey(NSLocaleCurrencySymbol) as! String;
             break;
         default:
-            currencySymbol = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCurrencySymbol) as! String;
+            currencySymbol = localeResolution.objectForKey(NSLocaleCurrencySymbol) as! String;
             break;
         };
         return currencySymbol;
+    }
+    
+    func getLocale() -> NSLocale {
+        switch formattingAlgorithm() {
+        case "default":
+            return NSLocale(localeIdentifier: "en_US");
+        case "system":
+            return NSLocale.currentLocale();
+        default:
+            return localeResolution;
+        };
     }
     
     func animateLiftTextfield() {
@@ -195,7 +214,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let formatter = NSNumberFormatter();
         formatter.numberStyle = .CurrencyStyle;
-        formatter.locale = localeResolution;
+        formatter.locale = getLocale();
         
         let tipAmount = billSubtotal * (Double(tipPercent) / 100);
         let total = billSubtotal + tipAmount;

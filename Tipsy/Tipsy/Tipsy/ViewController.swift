@@ -18,6 +18,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var billFieldLifted = false;
     var tipPercent: Int = 20;
     var splitWays: Int = 2;
+    var billFieldCenterConstraint: NSLayoutConstraint!;
+    var formattingAlgorithm: String!;
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!;
@@ -34,12 +36,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var resultViewBottomConstraint: NSLayoutConstraint!
     
-    var billFieldCenterConstraint: NSLayoutConstraint!;
+    @IBOutlet weak var SettingsButton: UIButton!
+    
+    @IBOutlet weak var tipLabelX: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+            // Determine currency/formatting style
+            // get user preference, or default to Format By Location
+        formattingAlgorithm = String(defaults.objectForKey("formattingAlgorithm")) ?? "location";
+        print("formatting:" + formattingAlgorithm);
+        
         billField.becomeFirstResponder();
         billField.placeholder = getCurrencySymbol();
         
@@ -59,14 +68,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if(currentTimestamp - lastSessionTime < 300) {
         let billSubtotal = defaults.doubleForKey("subtotal") ?? 0;
             if(billSubtotal >= 0.0) {
-                print("billSubtotal:");
-                print(billSubtotal);
                 tipPercent = defaults.integerForKey("tipPercent") ?? tipPercent;
                 splitWays = defaults.integerForKey("splitWays") ?? splitWays;
-                print("tipPercent:");
-                print(tipPercent);
-                print("splitWays:");
-                print(splitWays);
                 billField.text = String(billSubtotal);
                 tipSlider.value = Float(tipPercent);
                 tipPercentLabel.text = String(tipPercent) + "%";
@@ -122,7 +125,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func getCurrencySymbol() -> String {
-        return localeResolution.objectForKey(NSLocaleCurrencySymbol) as! String;
+        var currencySymbol: String!;
+        
+        switch formattingAlgorithm {
+        case "location":
+            currencySymbol = localeResolution.objectForKey(NSLocaleCurrencySymbol) as! String;
+            break;
+        case "system":
+            currencySymbol = NSLocale.currentLocale().objectForKey(NSLocaleCurrencySymbol) as! String;
+            break;
+        default:
+            currencySymbol = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCurrencySymbol) as! String;
+            break;
+        };
+        return currencySymbol;
     }
     
     func animateLiftTextfield() {
@@ -130,11 +146,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         billFieldCenterConstraint = billFieldCenterY; // backup
         
+        SettingsButton.alpha = 0;
+        SettingsButton.hidden = false;
+        
         UIView.animateWithDuration(0.4, animations: {
             self.view.removeConstraint(self.billFieldCenterY);
             self.resultViewBottomConstraint.priority = 100;
             self.view.layoutIfNeeded();
         });
+        
+        UIView.animateWithDuration(0.8, animations: {
+            self.SettingsButton.alpha = 1;
+        });
+        
     }
     
     func animateDropTextfield() {
@@ -142,11 +166,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         billFieldCenterY = billFieldCenterConstraint; // restore backup
         
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animateWithDuration(0.2, animations: {
+            self.SettingsButton.alpha = 0;
+            }, completion: { (complete: Bool) in
+                self.SettingsButton.hidden = true;
+                return;
+        });
+            UIView.animateWithDuration(0.4, animations: {
+                self.SettingsButton.alpha = 0;
             self.view.addConstraint(self.billFieldCenterY);
             self.resultViewBottomConstraint.priority = 800;
             self.view.layoutIfNeeded();
         });
+        
     }
     
     func updateTipLabels(billSubtotal : Double) {

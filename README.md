@@ -15,8 +15,8 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [X] UI animations
-* [X] Remembering the bill amount across app restarts (if <5mins)
-* [X] Using locale-specific currency and currency thousands separators<sup name="a3">[3](#f3)</sup>.
+* [X] Remembering the bill amount across app restarts (if <10mins)<sup name="a3">[3](#f3)</sup>
+* [X] Using locale-specific currency and currency thousands separators<sup name="a4">[4](#f4)</sup>.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
@@ -78,4 +78,6 @@ Excited for the CodePath University course! Looking forward to the opportunity w
   
   <b id="f2">[2]</b> Dedicating the Settings page to customization of tip amounts seemed like a slightly inefficient UX decision... that's something that'd be more easily achievable graphically on the front-end (with my UISlider solution, for example) versus empirically on a Settings page. Sooooo decided to use the Settings page for other (just as dumb) stuff instead. Lol! [↩](#a2)
   
-  <b id="f3">[3]</b> Comma separators are enabled on UILabels and match currency types (ie. currencies with unusual comma separation, like Indian Rupees, are supported). Comma separators are not enabled on the textbox; this is by design. [↩](#a3)
+  <b id="f3">[3]</b> I opted for making user-entered information persist for 1 hour, rather than just 10 minutes. Not like a user's gonna pay two restaurant bills in the same hour, right? Hahah [↩](#a3)
+
+  <b id="f4">[4]</b> Comma separators are enabled on UILabels and match currency types (ie. currencies with unusual comma separation, like Indian Rupees, are supported). Comma separators are not enabled on the textbox; this is by design. [↩](#a4)

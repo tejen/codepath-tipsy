@@ -59,7 +59,7 @@ Excited for the CodePath University course! Looking forward to the opportunity w
 
 ## License
 
-    Copyright [2015] [Tejen Patel]
+    Copyright ©2015 Tejen Hasmukh Patel
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

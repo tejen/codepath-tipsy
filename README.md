@@ -20,10 +20,9 @@ The following **optional** features are implemented:
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
-
+* [X] **Feelin' `tipsy`? Shake your device to get a random tip amount!**
 * [X] Using geolocation-specific currency. Uses GPS tracking (**harnessing iOS Location Services API**) for user's current location to determine the local currency type. #VacationMode !
 * [X] Integration with iOS Settings app (iOS Settings Bundle)
-* [X] **Feeling lucky? Shake your device to get a random tip amount!**
 * [X] Dedicated icons for Spotlight.
 * [X] App icons for every device type and size.
 * [X] Startup Screen for every device type and size.

@@ -135,19 +135,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func getCurrencySymbol() -> String {
-        var currencySymbol: String!;
-        switch formattingAlgorithm() {
-        case "default":
-            currencySymbol = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCurrencySymbol) as! String;
-            break;
-        case "system":
-            currencySymbol = NSLocale.currentLocale().objectForKey(NSLocaleCurrencySymbol) as! String;
-            break;
-        default:
-            currencySymbol = localeResolution.objectForKey(NSLocaleCurrencySymbol) as! String;
-            break;
-        };
-        return currencySymbol;
+        return getLocale().objectForKey(NSLocaleCurrencySymbol) as! String;
     }
     
     func getLocale() -> NSLocale {

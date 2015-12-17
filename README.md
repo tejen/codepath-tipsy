@@ -11,12 +11,12 @@ Time spent: **9** hours spent in total
 The following **required** functionality is complete:
 
 * [X] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
-* [X] Settings page to change the default tip percentage.
+* [X] Settings page to change the default tip percentage<sup name="a2">[2](#f2)</sup>.
 
 The following **optional** features are implemented:
 * [X] UI animations
 * [X] Remembering the bill amount across app restarts (if <5mins)
-* [X] Using locale-specific currency and currency thousands separators<sup name="a2">[2](#f2)</sup>.
+* [X] Using locale-specific currency and currency thousands separators<sup name="a3">[3](#f3)</sup>.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
@@ -76,4 +76,6 @@ Excited for the CodePath University course! Looking forward to the opportunity w
 
   <b id="f1">[1]</b> This README is based directly off of a [template](http://courses.codepath.com/snippets/intro_to_ios/readme_templates/prework_readme.md) which is provided CodePath University and intended specifically for this purpose. [↩](#a1)
   
-  <b id="f2">[2]</b> Comma separators are enabled on UILabels and match currency types (ie. currencies with unusual comma separation, like Indian Rupees, are supported). Comma separators are not enabled on the textbox; this is by design. [↩](#a2)
+  <b id="f2">[2]</b> Dedicating the Settings page to customization of tip amounts seemed like a slightly inefficient UX decision... that's something that'd be more easily achievable graphically on the front-end (with my UISlider solution, for example) versus empirically on a Settings page. Sooooo decided to use the Settings page for other (just as dumb) stuff instead. Lol! [↩](#a2)
+  
+  <b id="f3">[3]</b> Comma separators are enabled on UILabels and match currency types (ie. currencies with unusual comma separation, like Indian Rupees, are supported). Comma separators are not enabled on the textbox; this is by design. [↩](#a3)
